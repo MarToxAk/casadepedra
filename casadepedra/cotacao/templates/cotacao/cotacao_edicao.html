@@ -1,0 +1,354 @@
+{% extends "base.html" %}
+{% block body %}
+{% load static %}
+{% load bootstrap4 %}
+<div class="w3-container" id="Adicionar" style="margin-top:85px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Adicionar Cotação</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Informe os dados do hospede no formulário abaixo, para que possa esta fazer a cotação.</p>
+    <form method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        {% endbuttons %}
+    </form>
+
+</div>
+
+<script>
+    $('#id_telefone').mask('+55 (00) 00000-0000');
+
+</script>
+
+<script>
+    var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+    $('#id_check_in').datepicker({
+        uiLibrary: 'bootstrap4',
+        iconsLibrary: 'fontawesome',
+        format: "d/m/yyyy",
+        minDate: today,
+        maxDate: function () {
+            return $('#id_check_out').val();
+        }
+    });
+
+    $('#id_check_out').datepicker({
+        uiLibrary: 'bootstrap4',
+        iconsLibrary: 'fontawesome',
+        format: "d/m/yyyy",
+        minDate: function () {
+            return $('#id_check_in').val();
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    function Num_Criancas(selectObject) {
+        var value = selectObject.value;
+        if (value == 1) {
+            crianca1Function();
+        }
+    }
+</script>
+
+<script type="text/javascript">
+
+    var i = 0; /* Set Global Variable i */
+    function increment() {
+        i += 1; /* Function for automatic increment of field's "Name" attribute. */
+    }
+    /*
+    ---------------------------------------------
+    
+    Function to Remove Form Elements Dynamically
+    ---------------------------------------------
+    
+    */
+    function removeElement(parentDiv, childDiv) {
+        if (childDiv == parentDiv) {
+            alert("The parent div cannot be removed.");
+        }
+        else if (document.getElementById(childDiv)) {
+            var child = document.getElementById(childDiv);
+            var parent = document.getElementById(parentDiv);
+            parent.removeChild(child);
+        }
+        else {
+            alert("Child div has already been removed or does not exist.");
+            return false;
+        }
+    }
+    /*
+    ----------------------------------------------------------------------------
+    
+    Functions that will be called upon, when user click on the Name text field.
+    
+    ----------------------------------------------------------------------------
+    */
+    function crianca1Function() {
+        for (var i = 0; i <= 17; i++) {
+            window['o' + i] = document.createElement("option");
+            window['o' + i].setAttribute("value", i);
+            window['o' + i].innerHTML = i + ' Anos';
+        }
+        document.getElementById('myForm').innerHTML = '';
+        var r = document.createElement('div');
+        var y = document.createElement("select");
+        var o = document.createElement("option");
+        o.setAttribute("value", '0');
+        o.innerHTML = '0 Anos';
+        y.setAttribute("Name", "crianca1");
+        increment();
+        y.setAttribute("id", "id_crianca1");
+        y.setAttribute("class", "form-control");
+        for (var i = 0; i <= 17; i++) {
+            y.appendChild(window['o' + i]);
+        }
+        r.appendChild(y);
+        r.setAttribute("id", "id_kid_span");
+        r.setAttribute("class", "form-group");
+        document.getElementById("myForm").appendChild(r);
+    }
+    /*
+    -----------------------------------------------------------------------------
+    
+  
+    
+    ------------------------------------------------------------------------------
+    */
+
+
+    function crianca2Function() {
+        for (var i = 0; i <= 17; i++) {
+            window['o' + i] = document.createElement("option");
+            window['o' + i].setAttribute("value", i);
+            window['o' + i].innerHTML = i + ' Anos';
+            window['u' + i] = document.createElement("option");
+            window['u' + i].setAttribute("value", i);
+            window['u' + i].innerHTML = i + ' Anos';
+        }
+        document.getElementById('myForm').innerHTML = '';
+        var r = document.createElement('div');
+        var rr = document.createElement('div');
+        var div = document.createElement('div');
+        var y = document.createElement("select");
+        var p = document.createElement("select");
+        var o = document.createElement("option");
+        o.setAttribute("value", '0');
+        o.innerHTML = '0 Anos';
+        var u = document.createElement("option");
+        u.setAttribute("value", '0');
+        u.innerHTML = '0 Anos';
+        y.setAttribute("Name", "crianca1");
+        increment();
+        y.setAttribute("id", "id_crianca1");
+        y.setAttribute("class", "form-control");
+
+        p.setAttribute("Name", "crianca2");
+        increment();
+        p.setAttribute("id", "id_crianca2");
+        p.setAttribute("class", "form-control");
+
+        for (var i = 0; i <= 17; i++) {
+            y.appendChild(window['o' + i]);
+            p.appendChild(window['u' + i]);
+        }
+        r.appendChild(p);
+        r.setAttribute("id", "id_kid_span");
+        r.setAttribute("class", "form-group col-md-6");
+        rr.appendChild(y);
+        rr.setAttribute("id", "id_kid_span");
+        rr.setAttribute("class", "form-group col-md-6");
+        div.appendChild(rr);
+        div.appendChild(r);
+        div.setAttribute("class", "form-row");
+        document.getElementById("myForm").appendChild(div);
+
+
+    }
+
+    function crianca3Function() {
+        for (var i = 0; i <= 17; i++) {
+            window['o' + i] = document.createElement("option");
+            window['o' + i].setAttribute("value", i);
+            window['o' + i].innerHTML = i + ' Anos';
+            window['u' + i] = document.createElement("option");
+            window['u' + i].setAttribute("value", i);
+            window['u' + i].innerHTML = i + ' Anos';
+            window['m' + i] = document.createElement("option");
+            window['m' + i].setAttribute("value", i);
+            window['m' + i].innerHTML = i + ' Anos';
+        }
+        document.getElementById('myForm').innerHTML = '';
+        var r = document.createElement('div');
+        var rr = document.createElement('div');
+        var rrr = document.createElement('div');
+        var div = document.createElement('div');
+        var y = document.createElement("select");
+        var p = document.createElement("select");
+        var l = document.createElement("select");
+        var o = document.createElement("option");
+        o.setAttribute("value", '0');
+        o.innerHTML = '0 Anos';
+        var u = document.createElement("option");
+        u.setAttribute("value", '0');
+        u.innerHTML = '0 Anos';
+        var m = document.createElement("option");
+        m.setAttribute("value", '0');
+        m.innerHTML = '0 Anos';
+        y.setAttribute("Name", "crianca1");
+        increment();
+        y.setAttribute("id", "id_crianca1");
+        y.setAttribute("class", "form-control");
+        p.setAttribute("Name", "crianca2");
+        increment();
+        p.setAttribute("id", "id_crianca2");
+        p.setAttribute("class", "form-control");
+        l.setAttribute("Name", "crianca3");
+        increment();
+        l.setAttribute("id", "id_crianca3");
+        l.setAttribute("class", "form-control");
+        for (var i = 0; i <= 17; i++) {
+            y.appendChild(window['o' + i]);
+            p.appendChild(window['u' + i]);
+            l.appendChild(window['m' + i]);
+
+        }
+        r.appendChild(p);
+        r.setAttribute("id", "id_kid_span");
+        r.setAttribute("class", "form-group col-md-4");
+        rr.appendChild(y);
+        rr.setAttribute("id", "id_kid_span");
+        rr.setAttribute("class", "form-group col-md-4");
+        rrr.appendChild(l);
+        rrr.setAttribute("id", "id_kid_span");
+        rrr.setAttribute("class", "form-group col-md-4");
+        div.appendChild(r);
+        div.appendChild(rr);
+        div.appendChild(rrr);
+        div.setAttribute("class", "form-row");
+        document.getElementById("myForm").appendChild(div);
+    }
+
+    function crianca4Function() {
+        for (var i = 0; i <= 17; i++) {
+            window['o' + i] = document.createElement("option");
+            window['o' + i].setAttribute("value", i);
+            window['o' + i].innerHTML = i + ' Anos';
+            window['u' + i] = document.createElement("option");
+            window['u' + i].setAttribute("value", i);
+            window['u' + i].innerHTML = i + ' Anos';
+            window['m' + i] = document.createElement("option");
+            window['m' + i].setAttribute("value", i);
+            window['m' + i].innerHTML = i + ' Anos';
+            window['n' + i] = document.createElement("option");
+            window['n' + i].setAttribute("value", i);
+            window['n' + i].innerHTML = i + ' Anos';
+        }
+        document.getElementById('myForm').innerHTML = '';
+        var r = document.createElement('div');
+        var rr = document.createElement('div');
+        var rrr = document.createElement('div');
+        var rrrr = document.createElement('div');
+        var rrrrr = document.createElement('div');
+
+
+        var div = document.createElement('div');
+        var y = document.createElement("select");
+        var p = document.createElement("select");
+        var l = document.createElement("select");
+        var z = document.createElement("select");
+
+        var o = document.createElement("option");
+        o.setAttribute("value", '0');
+        o.innerHTML = '0 Anos';
+        var u = document.createElement("option");
+        u.setAttribute("value", '0');
+        u.innerHTML = '0 Anos';
+        var m = document.createElement("option");
+        m.setAttribute("value", '0');
+        m.innerHTML = '0 Anos';
+        var n = document.createElement("option");
+        n.setAttribute("value", '0');
+        n.innerHTML = '0 Anos';
+        y.setAttribute("Name", "crianca1");
+        increment();
+        y.setAttribute("id", "id_crianca1");
+        y.setAttribute("class", "form-control");
+        p.setAttribute("Name", "crianca2");
+        increment();
+        p.setAttribute("id", "id_crianca2");
+        p.setAttribute("class", "form-control");
+        l.setAttribute("Name", "crianca3");
+        increment();
+        l.setAttribute("id", "id_crianca3");
+        l.setAttribute("class", "form-control");
+        z.setAttribute("Name", "crianca3");
+        increment();
+        z.setAttribute("id", "id_crianca3");
+        z.setAttribute("class", "form-control");
+        for (var i = 0; i <= 17; i++) {
+            y.appendChild(window['o' + i]);
+            p.appendChild(window['u' + i]);
+            l.appendChild(window['m' + i]);
+            z.appendChild(window['n' + i]);
+
+
+        }
+        r.appendChild(p);
+        r.setAttribute("id", "id_kid_span");
+        r.setAttribute("class", "form-group col-md-3");
+        rr.appendChild(y);
+        rr.setAttribute("id", "id_kid_span");
+        rr.setAttribute("class", "form-group col-md-3");
+        rrr.appendChild(l);
+        rrr.setAttribute("id", "id_kid_span");
+        rrr.setAttribute("class", "form-group col-md-3");
+        rrrr.appendChild(z);
+        rrrr.setAttribute("id", "id_kid_span");
+        rrrr.setAttribute("class", "form-group col-md-3");
+        div.appendChild(r);
+        div.appendChild(rr);
+        div.appendChild(rrr);
+        div.appendChild(rrrr);
+        div.setAttribute("class", "form-row");
+        document.getElementById("myForm").appendChild(div);
+    }
+
+
+    function crianca0Function() {
+        document.getElementById('myForm').innerHTML = '';
+    }
+
+
+</script>
+
+<script type="text/javascript">
+    numCriancas23 = 0
+    function Num_Criancas(selectObject) {
+        var numCriancas2 = selectObject.value;
+        console.log(numCriancas2);
+        if (numCriancas2 == 0) {
+            console.log('Certo');
+            crianca0Function();
+        } else if (numCriancas2 == 1) {
+            console.log('certo');
+            crianca1Function();
+        } else if (numCriancas2 == 2) {
+            console.log('certo');
+            crianca2Function();
+        } else if (numCriancas2 == 3) {
+            console.log('certo');
+            crianca3Function();
+        } else if (numCriancas2 == 4) {
+            console.log('certo');
+            crianca4Function();
+        } else {
+            console.log('erro');
+            crianca0Function();
+        }
+    }
+</script>
+
+{% endblock %}

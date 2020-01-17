@@ -1,0 +1,43 @@
+{% load templates %}
+
+ 
+ <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+    <div class="w3-container">
+      <h3 class="w3-padding-64"><b>Pousada<br>Casa de Pedra</b></h3>
+    </div>
+    <div class="w3-bar-block">
+      {% if user.is_authenticated %}
+        Bem Vindo {{ user.username }}!
+        <a href="{% url 'core:index' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Inicio</a>
+        <a href="{% url 'cotacao:AddCotacaoUrls' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Adicionar</a>
+        <a href="{% url 'cotacao:ListaCotacaoUrls' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Lista</a>
+        <a href="{% url 'logout' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Sair</a>
+
+        {% if request.user|has_group:"Admin" %}
+          Configurações:
+          <br>-Configuração Geral
+          <a href="{% url 'configuracao:ConfiguracaoTextoLista' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Lista de Configurações</a>
+          <a href="{% url 'configuracao:ConfiguracaoWpp' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Adiciona Configuração</a>
+          <br>-Configuração Cotações
+          <a href="" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Lista de Configuração de Cotação</a>
+          <a href="" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Adiciona Configuração de Cotação</a>
+        {% else %}
+          <p>User doesn't belong to mygroup</p>
+        {% endif %}
+        {% else %}
+          <a href="" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Login</a>
+      {% endif %}
+    </div>
+  </nav>
+
+  <!-- Top menu on small screens -->
+  <header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+    <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+    <span>Pousada casa de Pedra</span>
+  </header>
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu"
+    id="myOverlay"></div>

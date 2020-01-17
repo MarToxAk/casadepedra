@@ -1,0 +1,30 @@
+<div id="alerts"></div>
+    <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
+      <div class="btn-group">
+        <a class="btn" name="bold" data-edit="inserttext" title="Negrito (Ctrl/Cmd+B)"><i class="fas fa-bold"></i></a>
+        <a class="btn" name="italic" data-edit="inserttext" title="Intalico (Ctrl/Cmd+I)"><i class="fas fa-italic"></i></a>
+        <a class="btn" name="strikethrough" data-edit="inserttext" title="Tachado"><i class="fas fa-strikethrough"></i></a>
+        <a class="btn" name="monospace" data-edit="inserttext" title="Monospace (Ctrl/Cmd+U)"><i class="fas fa-th"></i></a>
+      </div>
+      <div class="btn-group">
+        <a class="btn" name='$Check_In' data-edit="inserttext" title="Data Do Check-In Ex.(26/01/2020)"><i class="far fa-calendar-check"></i></a>
+        <a class="btn" name='$Check_Out' data-edit="inserttext" title="Data Do Check-Out Ex.(28/01/2020)"><i class="far fa-calendar-times"></i></a>
+        <a class="btn" name='$Num_Dias' data-edit="inserttext" title="Numero de dias Ex.(Dois Dias) "><i class="far fa-hourglass"></i></a>
+        <a class="btn" name='$Num_Criancas' data-edit="inserttext" title="Numero de Crianças Ex.(Duas Crianças 'Sendo uma cortesia')"><i class="fas fa-baby fa-child"><i class="fas fa-baby"><i class="fas fa-female"></i></i></i></a>
+        <a class="btn" name='$Idade_Crianca' data-edit="inserttext" title="Idade das Crianças Ex.(1, 2 Anos)"><i class="fas fa-birthday-cake"></i></a>
+        <a class="btn" name='$Num_Pessoas' data-edit="inserttext" title="Numero de Adultos Ex.(Dois Adultos)"><i class="fas fa-restroom"></i></a>
+        <a class="btn" name='$Valor_Total' data-edit="inserttext" title="Valor Total Tirado da Omnibees Ex.(R$ 1.752,55)"><i class="far fa-money-bill-alt"></i></a>
+        <a class="btn" name='$Valor_Real' data-edit="inserttext" title="Valor Real, Valor Total + % Setada na configuraçao Ex.(R$ 1.752,55)"><i class="fas fa-money-bill-alt"> <i class="fas fa-plus	"> <i class="fas fa-percentage"></i></i></i></a>
+        <a class="btn" name='$Valor_Desconto' data-edit="inserttext" title="Valor Desconto, Valor Total + % Setada na configuraçao Ex.(R$ 1.752,55)"><i class="far fa-money-bill-alt"> <i class="fas fa-minus	"> <i class="fas fa-percentage"></i></i></i></a>
+        <a class="btn" name='$Valor_Da_Entrada' data-edit="inserttext" title="Valor da Entrada, Valor Total / (Num_Parcela + 1) Setada na configuraçao Ex.(R$ 1.752,55)"><i class="	fas fa-money-bill-wave"></i></a>
+        <a class="btn" name='$Valor_Da_Parcelas' data-edit="inserttext" title="Valor da Parcela, Valor Total / (Num_Parcela) Setada na configuraçao Ex.(R$ 1.752,55)"><i class="fas fa-money-bill-wave-alt"></i></a>
+        <a class="btn" name='$Valor_Da_Parcelas_Menos_Etrada' data-edit="inserttext" title="Valor da Parcela, (Valor Total - Valor_Da_Entrada) / (Num_Parcela) Setada na configuraçao Ex.(R$ 1.752,55)"><i class="far fa-money-bill-alt"> <i class="fas fa-minus"> <i class="fas fa-money-bill-wave"></i></i></i></a>
+        <a class="btn" name='$Valor_50Porc' data-edit="inserttext" title="Valor da Dividido, Valor Total / 2 = (50%) Ex.(R$ 1.752,55)"><i class="far fa-money-bill-alt"> <i class="	fas fa-divide"> <i class="fa fa-number-1">2</i></i></i></a>
+        <a class="btn" name='$Num_Parcela' data-edit="inserttext" title="Numero de Parcela Setada nas configurações Ex.(3x)"><i class="fas fa-times"></i></a>
+        <a class="btn" name='$Num_Parcela_Mais_1' data-edit="inserttext" title="Numero de Parcela + 1  Setada nas configurações Ex.(4x)"><i class="fas fa-times"> <i class="fas fa-plus"> <i class="fa fa-number-1">1</i></i></i></a>
+        <a class="btn" name='$Porcentagem' data-edit="inserttext" title="Porcentagem Configurada nas configurações Ex. (10%)"><i class="fas fa-percentage"></i></a>
+        <a class="btn" name='$Porcentagem_Mais_5' data-edit="inserttext" title="Porcentagem + 5% Configurada nas configurações Ex. (15%)"><i class="fas fa-percentage"> <i class="fas fa-plus"></i></i></a>
+      </div>
+    </div>
+<textarea name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>{% if widget.value %}{{ widget.value }}{% endif %}</textarea>
+    

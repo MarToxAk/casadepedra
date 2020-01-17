@@ -1,0 +1,6 @@
+<div{% if widget.attrs.id %} id="{{ widget.attrs.id|stringformat:'div' }}" {% endif %} class="form-group">
+
+    <input type="{{ widget.type }}" name="{{ widget.name }}" {% if widget.value != None %}
+        value="{{ widget.value|stringformat:'s' }}" {% endif %}{% include "django/forms/widgets/attrs.html" %}>
+    {{ teste }}
+    </div>

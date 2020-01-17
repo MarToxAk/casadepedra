@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block header %}
+
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{# Display a form #}
+
+<link href="{% static 'css/all.css'%}" rel="stylesheet">
+<script src="{% static 'js/gijgo.min.js' %}" type="text/javascript"></script>
+<link href="{% static 'css/gijgo.min.css' %}" rel="stylesheet" type="text/css" />
+<script src="{% static '/js/jquery.mask.js' %}"></script>
+
+{% endblock header %}
+
+{% block body %}
+{% load bootstrap4 %}
+<div class="w3-container" id="Adicionar" style="margin-top:85px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Adicionar Cotação</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Informe os dados do hospede no formulário abaixo, para que possa esta fazer a cotação.</p>
+    <form method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        {% endbuttons %}
+    </form>
+</div>
+
+{% endblock %}
+
+
+{% block script %}
+<script>
+    $('#id_telefone').mask('+55 (00) 00000-0000');
+
+    var items = document.getElementById('id_crianca11');
+    items.addEventListener('change', function () {
+        alert(this.value); // o valor que procuras é: this.value
+    });
+</script>
+
+<script>
+    var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+    $('#id_check_in').datepicker({
+        uiLibrary: 'bootstrap4',
+        iconsLibrary: 'fontawesome',
+        format: "d/m/yyyy",
+        minDate: today,
+        maxDate: function () {
+            return $('#id_check_out').val();
+        }
+    });
+
+    $('#id_check_out').datepicker({
+        uiLibrary: 'bootstrap4',
+        iconsLibrary: 'fontawesome',
+        format: "d/m/yyyy",
+        minDate: function () {
+            return $('#id_check_in').val();
+        }
+    });
+</script>
+<script type="text/javascript">
+    function Crianca1(selectObject) {
+        var value = selectObject.value;
+        document.getElementById("id_crianca1").value = value;
+    }
+</script>
+
+
+
+<script type="text/javascript">
+    function Num_Criancas(selectObject) {
+        var numCriancas2 = selectObject.value;
+        if (numCriancas2 == 0) {
+            crianca0Function();
+        } else if (numCriancas2 == 1) {
+            
+        } else if (numCriancas2 == 2) {
+            
+        } else if (numCriancas2 == 3) {
+            
+        } else if (numCriancas2 == 4) {
+          
+        } else {
+
+        }
+    }
+</script>
+
+{% endblock script %}
+    

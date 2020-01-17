@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% load bootstrap4 %}
+{% load static %}
+{% block header %}
+<title>Configuração Texto WhatsApp Pousada Casa de Pedra</title>
+
+<link href="{% static 'external/google-code-prettify/prettify.css' %}" rel="stylesheet">
+
+<link href='{% static "css/all.css" %}' rel="stylesheet">
+<link href="{% static 'css/index.css' %}" rel="stylesheet">
+<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'external/jquery.hotkeys.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}" ></script>
+<script src="{% static 'external/google-code-prettify/prettify.js' %}"></script>
+<script src="{% static 'js/bootstrap-wysiwyg.js' %}"></script>
+
+{% endblock header %}
+{% block body %}
+<div class="w3-container" id="Adicionar" style="margin-top:85px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Configuração de Cotação</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Aqui é configurado o texto que ira aparece na hora de fazer a cotação</p>
+
+<form method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    {% endbuttons %}
+</form>
+</div>
+{% endblock body %}
+
+{% block script %}
+<script>
+   
+    $('#id_cotacao_texto').each(function(){
+        this.contentEditable = true;
+    });
+
+    $(function() {
+      startRefresh();
+    });
+
+    function startRefresh() {
+      setTimeout(startRefresh,1000);
+      if ($("#id_cotacao_texto").val().indexOf('$Check_In') < 0){
+        $("#id_check_in").prop('checked', false);
+      }; 
+      if ($("#id_cotacao_texto").val().indexOf("$Check_Out") < 0){
+        $("#id_check_out").prop('checked', false);
+      }; 
+      if ($("#id_cotacao_texto").val().indexOf("$Num_Dias") < 0){
+        $("#id_num_dias").prop('checked', false);
+      }; 
+      if ($("#id_cotacao_texto").val().indexOf("$Num_Criancas") < 0 ){
+        $("#id_num_criancas").prop('checked', false);
+      }; 
+      if ($("#id_cotacao_texto").val().indexOf("$Idade_Crianca") < 0){
+        $("#id_idade_crianca").prop('checked', false);
+      }; 
+      if ($("#id_cotacao_texto").val().indexOf("$Num_Pessoas") < 0 ){
+        $("#id_num_pessoas").prop('checked', false);
+      }; 
+      if ($("#id_cotacao_texto").val().indexOf("$Valor_Total") < 0){
+        $("#id_valor_total").prop('checked', false);
+      }; 
+      if ($("#id_cotacao_texto").val().indexOf("$Valor_Real") < 0){
+        $("#id_valor_real").prop('checked', false);
+      }; 
+      if ($("#id_cotacao_texto").val().indexOf("$Valor_Desconto") < 0){
+        $("#id_valor_desconto").prop('checked', false);
+      }; 
+      if ($("#id_cotacao_texto").val().indexOf("$Valor_Da_Parcelas") < 0){
+        $("#id_valor_da_parcelas").prop('checked', false);
+      }; 
+      if ($("#id_cotacao_texto").val().indexOf("$Valor_Da_Parcelas_Menos_Etrada") < 0){
+        $("#id_valor_da_parcelas_menos_etrada").prop('checked', false);
+      }; 
+      if ($("#id_cotacao_texto").val().indexOf("$Valor_50Porc") < 0){
+        $("#id_valor_50porc").prop('checked', false);
+      }; 
+      if ($("#id_cotacao_texto").val().indexOf("$Num_Parcela") < 0){
+        $("#id_num_parcela").prop('checked', false);
+      }; 
+      if ($("#id_cotacao_texto").val().indexOf("$Num_Parcela_Mais_1") < 0){
+        $("#id_num_parcela_mais_1").prop('checked', false);
+      } 
+      if ($("#id_cotacao_texto").val().indexOf("$Porcentagem") < 0){
+        $("#id_porcentagem").prop('checked', false);
+      } 
+      if ($("#id_cotacao_texto").val().indexOf("$Porcentagem_Mais_5") < 0){
+        $("#id_porcentagem_mais_5").prop('checked', false);
+      } 
+      };
+      ddd = $("#id_cotacao_texto");
+      console.log(ddd)
+    ddd.designMode = "on";
+    </script>
+    
+    <script>
+      $(function(){
+
+        function initToolbarBootstrapBindings() {
+          var fonts = ['Serif', 'Sans', 'Arial', 'Arial Black', 'Courier', 
+                'Courier New', 'Comic Sans MS', 'Helvetica', 'Impact', 'Lucida Grande', 'Lucida Sans', 'Tahoma', 'Times',
+                'Times New Roman', 'Verdana'],
+                fontTarget = $('[title=Font]').siblings('.dropdown-menu');
+          $.each(fonts, function (idx, fontName) {
+              fontTarget.append($('<li><a data-edit="fontName ' + fontName +'" style="font-family:\''+ fontName +'\'">'+fontName + '</a></li>'));
+          });
+          $('a[title]').tooltip({container:'body'});
+            $('.dropdown-menu input').click(function() {return false;})
+                .change(function () {$(this).parent('.dropdown-menu').siblings('.dropdown-toggle').dropdown('toggle');})
+            .keydown('esc', function () {this.value='';$(this).change();});
+    
+          $('[data-role=magic-overlay]').each(function () { 
+            var overlay = $(this), target = $(overlay.data('target')); 
+            overlay.css('opacity', 0).css('position', 'absolute').offset(target.offset()).width(target.outerWidth()).height(target.outerHeight());
+          });
+          if ("onwebkitspeechchange"  in document.createElement("input")) {
+            var editorOffset = $('#id_cotacao_texto').offset();
+            $('#voiceBtn').css('position','absolute').offset({top: editorOffset.top, left: editorOffset.left+$('#id_cotacao_texto').innerWidth()-35});
+          } else {
+            $('#voiceBtn').hide();
+          }
+        };
+        function showErrorAlert (reason, detail) {
+            var msg='';
+            if (reason==='unsupported-file-type') { msg = "Unsupported format " +detail; }
+            else {
+                console.log("error uploading file", reason, detail);
+            }
+            $('<div class="alert"> <button type="button" class="close" data-dismiss="alert">&times;</button>'+ 
+             '<strong>File upload error</strong> '+msg+' </div>').prependTo('#alerts');
+        };
+        initToolbarBootstrapBindings();  
+        $('#id_cotacao_texto').wysiwyg({ fileUploadError: showErrorAlert} );
+        window.prettyPrint && prettyPrint();
+      });
+    </script>
+    
+    
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    
+{% endblock script %}
